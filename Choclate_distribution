@@ -1,0 +1,32 @@
+Choclate distribution problem
+  
+  class Solution
+{
+    public long findMinDiff (ArrayList<Integer> a, int n, int m)
+    {
+        // your code here
+        Collections.sort(a);
+        int diff=0;
+        long min_diff=Integer.MAX_VALUE;   
+        for(int i=0;i<n;i++)
+        {  if(m-1+i<n) 
+             {
+               diff=a.get(m-1+i)-a.get(i);
+               if(diff<min_diff)
+               min_diff=diff;
+             }
+             else return min_diff;
+        }
+        return min_diff;
+    }
+}
+
+steps-:
+1) sorting the given Arraylist
+2) intializing two variables 
+   i) int diff= contains the diffrence of frist and last element of m size array
+    ii) min_diff= contains the minimum diffrence from the value of diff
+3) in loop taking the diffrence between first and last element of 'm' size array
+    if this diffrence is less than min_diff then updating min_diff by the 
+     value of diff
+4) return min_diff;
