@@ -1,0 +1,47 @@
+_________________________Mehtod 1___________________
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        
+       int low = 1, high = nums.length - 1;
+        int duplicate = -1;
+        
+        while (low <= high) {
+            int cur = (low + high) / 2;                  // O(nlogn)   logn for binary and n for elements of array
+
+            // Count how many numbers in 'nums' are less than or equal to 'cur'
+            int count = 0;
+            for (int num : nums) {
+                if (num <= cur)                            logic--> for any number , no. of elements equal to or less than to it is always equal to that number 
+                    count++;                                           [1,n] all distinct except one 
+            }
+            
+            if (count > cur) {
+                duplicate = cur;
+                high = cur - 1;
+            } else {
+                low = cur + 1;
+            }
+        }
+        return duplicate;
+        
+    }
+}
+
+_____________________Method 2______________________
+
+
+class Solution {
+    public int findDuplicate(int[] nums) {
+        while (nums[0] != nums[nums[0]]) {         time- O(n)   array as a hashmap
+            int nxt = nums[nums[0]];                  space - O(1)
+            nums[nums[0]] = nums[0];
+            nums[0] = nxt;
+        }
+        return nums[0];
+    }
+}
+
+__________________Method 3_______________
+
+can use SET  but space will be compromised
