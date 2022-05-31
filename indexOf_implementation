@@ -1,0 +1,56 @@
+Q) Given two strings needle and haystack, return the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+__________________METHOD 1 ________________
+DIRECTLY USING indexOf() method
+
+class Solution {
+    public int strStr(String haystack, String needle) {
+        if(needle=="")
+            return 0;
+        int x=haystack.indexOf(needle);
+        if(x>=0)
+            return x;
+        else
+            return -1;
+    }
+}
+
+______________________________IMPLEMENTATION OF INDEX OF METHOD__________________________-
+class Solution {
+    public int strStr(String haystack, String needle){
+        int h=haystack.length();
+        int n= needle.length();
+        char ha[]= haystack.toCharArray();
+        char ne[]= needle.toCharArray();
+        
+        int start_index=0;
+        int end_index = 0;
+        
+        if(needle == null)
+            return 0;                       // java indexOf method implementation 
+        if(haystack == null )
+            return -1;
+        
+        for(int i=0;i<h ;i++)
+        {
+            if(ha[i]==ne[0])
+            {
+                start_index=i;
+                end_index=i;
+                i++;
+            }
+            for(int j=1; (j<n && i<h); i++,j++)
+            {
+                if(ha[i]==ne[j])
+                    end_index=i;
+                else 
+                    break;
+            }
+             if((end_index+1)-start_index == n)
+             return start_index;
+           
+             i=start_index;
+        }
+       return -1;
+    }
+}
