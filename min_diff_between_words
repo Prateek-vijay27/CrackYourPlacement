@@ -1,0 +1,29 @@
+class Solution {
+    int shortestDistance(ArrayList<String> s, String word1, String word2) {
+        int count1=-1;
+        int count2 =-1;
+        int min_diff=Integer.MAX_VALUE;
+        for(int i=0;i<s.size();i++)
+        {
+            if(s.get(i).equals(word1))
+            count1=i;
+            if(s.get(i).equals(word2))
+            count2=i;
+            
+            if(count1!=-1 && count2!=-1)
+            min_diff= Math.min(min_diff,Math.abs(count1-count2));
+        }
+        return min_diff;
+    }
+}
+
+
+
+Input:
+S = {"geeks", "for", "geeks", "contribute", 
+     "practice"}
+word1 = "geeks"
+word2 = "practice"
+Output: 2
+Explanation: Minimum distance between the
+words "geeks" and "practice" is 2
