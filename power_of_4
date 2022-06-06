@@ -1,0 +1,136 @@
+______________________method 1 __________________
+
+class Solution {
+    public boolean isPowerOfFour(int n) {
+         
+        if(n<=0)
+            return false;                     time - O(logbase(4)n)   space -O(1)
+        
+        while(n%4==0 && n!=0)
+        {
+            n=n/4;
+        }
+        return n==1;
+    }
+}
+
+
+____________________method 2 ___________________
+
+A number n is a power of 4 if the following conditions are met. 
+a) There is only one bit set in the binary representation of n (or n is a power of 2) 
+b) The count of zero bits before the (only) set bit is even.
+For example 16 (10000) is the power of 4 because there is only one bit set and count of 0s before the set bit is 4 which is even.
+
+
+class GFG
+{
+    static int isPowerOfFour(int n)
+    {
+        int count = 0;
+         
+        /*Check if there is                                    time - O(logbase(4))   space -O(1)
+        only one bit set in n*/
+        int x = n & (n - 1);
+         
+        if ( n > 0 && x == 0)
+        {
+            /* count 0 bits
+            before set bit */
+            while(n > 1)
+            {
+                n >>= 1;
+                count += 1;
+            }
+         
+            /*If count is even
+            then return true
+            else false*/
+            return (count % 2 == 0) ? 1 : 0;
+        }
+         
+            /* If there are more than
+            1 bit set then n is not a
+            power of 4*/
+        return 0;
+    }
+    
+    
+    
+    ____________________Method 3_________________
+    
+    
+     A number will be a power of 4 if floor(log4(num))=ceil(log4(num) because log4 of a number that is a power of 4 will always be an integer. 
+     
+     class GFG{
+ 
+static double logn(int n,
+                   int r)
+{                                                    time - O(logbase(4))    space - O(1)
+  return Math.log(n) /
+         Math.log(r);
+}
+ 
+static boolean isPowerOfFour(int n)
+{
+  // 0 is not considered
+  // as a power of 4
+  if (n == 0)
+    return false;
+  return Math.floor(logn(n, 4)) ==
+         Math.ceil(logn(n, 4));
+}
+
+
+__________________________-method 4 ________________
+
+A number ‘n’ is a power of 4 if  –
+
+a) It is a perfect square
+
+b) It is a power of two
+
+class GFG {
+ 
+    // Function to check perfect square
+    static boolean isPerfectSqaure(int n) {
+        int x = (int) Math.sqrt(n);
+ 
+        return (x * x == n);                                  time - O(logbase(2))    space - O(1)
+    }
+ 
+    static boolean isPowerOfFour(int n)
+    {
+       
+        // If n <= 0, it is not the power of four
+        if (n <= 0)
+            return false;
+                                                                
+        // Check whether 'n' is a perfect square or not
+        if (!isPerfectSqaure(n))
+            return false;
+ 
+        // If 'n' is the perfect square
+        // Check for the second condition i.e. 'n' must be power of two
+        return (n & (n - 1)) != 1 ? true : false;
+    }
+    
+    
+ 
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
