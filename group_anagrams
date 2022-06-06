@@ -1,0 +1,56 @@
+______________________Method -1 ____________________
+
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+     
+        Map<String,List<String>> map = new HashMap<>();
+         for(String str : strs)
+         {
+             String str1 = sortString(str);
+             if(map.containsKey(str1))                                     // using Map and sorting each element of  String [] strs 
+             {                                                           // time - O(nm)  n--> length of element    --> length of strs
+                 map.get(str1).add(str);
+             }
+             else
+             {
+                 map.put(str1 , new ArrayList<>(Arrays.asList(str)));
+             }
+         }
+           
+        return new ArrayList<>(map.values());
+       
+        }
+    
+           String sortString(String s)
+              { 
+               char c[]= s.toCharArray();
+               Arrays.sort(c);
+               return String.valueOf(c);
+              }
+    
+    }
+    
+    
+    ______________________-Method 2 __________________
+    
+    
+    class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, ArrayList<String>> groups = new HashMap<>();
+        for(String s: strs) {
+            int[] count = new int[26];                       // without sorting each element of strs array  
+            for(char c: s.toCharArray()) {                   
+                count[c -'a'] += 1;
+            }
+            String n = Arrays.toString(count);
+            if(!groups.containsKey(n)){ 
+                groups.put(n, new ArrayList<String>());
+                groups.get(n).add(s);
+            } else {
+                groups.get(n).add(s);
+            }
+        }
+        return new ArrayList(groups.values());
+    }
+}
