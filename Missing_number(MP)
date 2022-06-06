@@ -1,0 +1,13 @@
+class Solution {
+    public int missingNumber(int[] nums) {
+       int total=0;
+        int n=nums.length+1;                   // finding array sum ,  then finding sum of n numbers starting from 0  --> (n*(n-1))/2   n--> no. of values 
+        for(int i=0;i<nums.length;i++)         
+        {
+            total = total + nums[i];
+        }
+        int sum = (n*(n-1))/2;
+        
+        return sum-total;    
+    }
+}
