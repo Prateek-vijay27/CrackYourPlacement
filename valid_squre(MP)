@@ -1,0 +1,40 @@
+
+A square can only have 2 different lengths between two points, Also, any 4 points satisfy conditions below must be a square:
+
+1) the length of diagonal
+2) the length of the edge
+
+the simplest solution can get every distance between every two points and add to a set
+ if(set.size() == 2)
+     return true 
+ else 
+     false;
+
+
+
+class Solution {
+  public boolean validSquare(int[] p1, int[] p2, int[] p3, int[] p4) {
+      
+      Set<Integer> s = new HashSet<>();
+    
+      if (isSame(p1,p2) || isSame(p1,p3) || isSame(p1,p4) || isSame(p2,p3) || isSame(p3,p4) || isSame(p2,p4)) {    
+            return false;
+        } 
+        s.add(dis(p1,p2));                                       time O(1)     space O(1)
+        s.add(dis(p1,p3));
+        s.add(dis(p1,p4));
+        s.add(dis(p2,p3));
+        s.add(dis(p2,p4));
+        s.add(dis(p3,p4));
+        
+        return s.size() == 2;
+    }
+    
+    private int dis(int[] p1, int[] p2) {
+        return (p1[0]-p2[0]) * (p1[0]-p2[0]) + (p1[1]-p2[1]) * (p1[1]-p2[1]);
+    }
+    
+    private boolean isSame(int[] p1, int[] p2) {
+        return p1[0] == p2[0] && p1[1] == p2[1];
+    }
+}
