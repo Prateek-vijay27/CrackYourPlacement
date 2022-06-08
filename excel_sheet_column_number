@@ -1,0 +1,39 @@
+Given a string columnTitle that represents the column title as appears in an Excel sheet, return its corresponding column number.
+
+For example:
+
+A -> 1
+B -> 2
+C -> 3
+...
+Z -> 26
+AA -> 27
+AB -> 28 
+
+
+
+
+Approach: The process is similar to binary to decimal conversion. 
+For example, to convert AB, the formula is 26 * 1 + 2. 
+As another example, 
+ 
+
+To convert CDA,
+3*26*26 + 4*26 + 1
+
+So it is very much similar to converting binary to decimal keeping the base as 26. 
+
+
+
+
+class Solution {
+    public int titleToNumber(String columnTitle) {
+        int result =0;
+        for(int i=0;i<columnTitle.length();i++)                time - O(n) n is length of input string               space -O(1)
+        {
+            result = result*26;
+          result = result +  (columnTitle.charAt(i) -'A'+1);
+        }
+        return result;
+    }
+}
