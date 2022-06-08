@@ -1,0 +1,16 @@
+See in each step we can increase n-1 elements by 1. Now that means we reduce 1 element by 1 in comparison to the growth of other elements.
+So if we find out how many times we need to subtract 1 from each element to make it equal to the minimum element that is the answer.
+
+class Solution {
+    public int minMoves(int[] nums) {
+        int min = nums[0];
+        for (int x : nums)
+            min = Math.min(min, x);       time O(n)      space - O(1)
+        
+        int moves = 0;
+        
+        for (int x : nums) 
+            moves = moves + x - min;
+        return moves;
+    }
+}
