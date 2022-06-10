@@ -1,0 +1,47 @@
+class Solution {
+    public String[] findWords(String[] words) {
+        String s1="qwertyuiopQWERTYUIOP";
+	        String s2="asdfghjklASDFGHJKL";
+	        String s3="zxcvbnmZXCVBNM";
+	        boolean f=true;
+	        int count=0;
+	        String cat="";
+	        List<String> lst=new ArrayList();
+	        for(String w: words){
+	            f=true;
+	            char c1=w.charAt(0);
+	            if(s1.indexOf(c1)!=-1){
+	                  cat="s1";
+	                }else if(s2.indexOf(c1)!=-1){
+	                   cat="s2";
+	                }else if(s3.indexOf(c1)!=-1){
+	                	cat="s3";
+	                }
+	            
+	            for(char c: w.toCharArray()){
+	               if(cat.equals("s1")) {
+	            	   if(s1.indexOf(c)==-1) {
+	            		   f=false;
+	            	   }
+	               }
+	               if(cat.equals("s2")) {
+	            	   if(s2.indexOf(c)==-1) {
+	            		   f=false;
+	            	   }
+	               }
+	               if(cat.equals("s3")) {
+	            	   if(s3.indexOf(c)==-1) {
+	            		   f=false;
+	            	   }
+	               }
+	               
+	            }
+	            if(f){
+	                lst.add(w);
+	                count++;
+	            }
+	        }
+	        String [] finalOut=lst.toArray(new String[lst.size()]);
+	        return finalOut;
+    }
+}
